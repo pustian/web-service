@@ -1,0 +1,79 @@
+<wsdl:definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://pusen.tian/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:ns1="http://schemas.xmlsoap.org/soap/http" name="WebServiceImpl" targetNamespace="http://pusen.tian/">
+<wsdl:types>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://pusen.tian/" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://pusen.tian/">
+<xsd:element name="saveInfo" type="tns:saveInfo"/>
+<xsd:complexType name="saveInfo">
+<xsd:sequence>
+<xsd:element minOccurs="0" name="name" type="xsd:string"/>
+<xsd:element minOccurs="0" name="info" type="xsd:string"/>
+</xsd:sequence>
+</xsd:complexType>
+<xsd:element name="saveInfoResponse" type="tns:saveInfoResponse"/>
+<xsd:complexType name="saveInfoResponse">
+<xsd:sequence>
+<xsd:element minOccurs="0" name="return" type="xsd:string"/>
+</xsd:sequence>
+</xsd:complexType>
+<xsd:element name="sayHello" type="tns:sayHello"/>
+<xsd:complexType name="sayHello">
+<xsd:sequence>
+<xsd:element minOccurs="0" name="name" type="xsd:string"/>
+</xsd:sequence>
+</xsd:complexType>
+<xsd:element name="sayHelloResponse" type="tns:sayHelloResponse"/>
+<xsd:complexType name="sayHelloResponse">
+<xsd:sequence>
+<xsd:element minOccurs="0" name="return" type="xsd:string"/>
+</xsd:sequence>
+</xsd:complexType>
+</xsd:schema>
+</wsdl:types>
+<wsdl:message name="sayHello">
+<wsdl:part element="tns:sayHello" name="parameters"> </wsdl:part>
+</wsdl:message>
+<wsdl:message name="saveInfo">
+<wsdl:part element="tns:saveInfo" name="parameters"> </wsdl:part>
+</wsdl:message>
+<wsdl:message name="sayHelloResponse">
+<wsdl:part element="tns:sayHelloResponse" name="parameters"> </wsdl:part>
+</wsdl:message>
+<wsdl:message name="saveInfoResponse">
+<wsdl:part element="tns:saveInfoResponse" name="parameters"> </wsdl:part>
+</wsdl:message>
+<wsdl:portType name="WebServiceImplPortType">
+<wsdl:operation name="saveInfo">
+<wsdl:input message="tns:saveInfo" name="saveInfo"> </wsdl:input>
+<wsdl:output message="tns:saveInfoResponse" name="saveInfoResponse"> </wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="sayHello">
+<wsdl:input message="tns:sayHello" name="sayHello"> </wsdl:input>
+<wsdl:output message="tns:sayHelloResponse" name="sayHelloResponse"> </wsdl:output>
+</wsdl:operation>
+</wsdl:portType>
+<wsdl:binding name="WebServiceImplSoapBinding" type="tns:WebServiceImplPortType">
+<soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+<wsdl:operation name="saveInfo">
+<soap:operation soapAction="" style="document"/>
+<wsdl:input name="saveInfo">
+<soap:body use="literal"/>
+</wsdl:input>
+<wsdl:output name="saveInfoResponse">
+<soap:body use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="sayHello">
+<soap:operation soapAction="" style="document"/>
+<wsdl:input name="sayHello">
+<soap:body use="literal"/>
+</wsdl:input>
+<wsdl:output name="sayHelloResponse">
+<soap:body use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+</wsdl:binding>
+<wsdl:service name="WebServiceImpl">
+<wsdl:port binding="tns:WebServiceImplSoapBinding" name="WebServiceImplPort">
+<soap:address location="http://localhost:8989/WS_Server/Webservice"/>
+</wsdl:port>
+</wsdl:service>
+</wsdl:definitions>
